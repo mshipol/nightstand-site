@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Nightstand</title>
+  <meta name="description" content="Nightstand privacy policy — how we collect, use, and protect your data.">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1c1917;
+      --warm-white: #fdfaf6;
+      --cream: #f5f0e8;
+      --amber: #d97706;
+      --amber-light: #fbbf24;
+      --brown: #78350f;
+      --brown-mid: #92400e;
+      --text-muted: #6b6560;
+      --border: #e5ddd0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.7;
+      background: var(--warm-white);
+    }
+
+    a { color: var(--amber); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--amber); }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(160deg, #2c1810 0%, #4a2415 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .toc {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .toc li {
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 48px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 28px 0 10px;
+    }
+    p {
+      font-size: 0.95rem;
+      color: #3d3730;
+      margin-bottom: 14px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    li {
+      font-size: 0.95rem;
+      color: #3d3730;
+      margin-bottom: 6px;
+    }
+    .callout {
+      background: var(--cream);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: #3d3730;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.55);
+      padding: 36px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .footer-links a { color: rgba(255,255,255,0.55); transition: color 0.15s; }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+    .footer-brand { font-weight: 700; color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 6px; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">📚 Night<span>stand</span></a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: April 1, 2025</p>
+  </header>
+
+  <div class="content">
+
+    <div class="callout">
+      <strong>Short version:</strong> We collect only what we need to make the app work. We don't sell your data — ever. You can delete your account and all your data at any time, directly from the app.
+    </div>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-we-collect">What we collect</a></li>
+        <li><a href="#how-we-use">How we use your data</a></li>
+        <li><a href="#third-parties">Third-party services</a></li>
+        <li><a href="#data-storage">Data storage &amp; security</a></li>
+        <li><a href="#your-rights">Your rights</a></li>
+        <li><a href="#children">Children's privacy</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+        <li><a href="#terms">Terms of Use</a></li>
+      </ol>
+    </div>
+
+    <h2 id="what-we-collect">1. What we collect</h2>
+
+    <h3>Account information</h3>
+    <p>When you create an account, we collect:</p>
+    <ul>
+      <li>Your email address</li>
+      <li>Your display name (optional)</li>
+      <li>Profile photo (optional, if you upload one)</li>
+      <li>Authentication method (email/password, Google Sign-In, or Sign in with Apple)</li>
+    </ul>
+
+    <h3>Reading data</h3>
+    <p>The core purpose of the app — we store:</p>
+    <ul>
+      <li>Books you add to your library (title, author, cover, page count, status)</li>
+      <li>Reading sessions (start time, end time, pages read or minutes listened)</li>
+      <li>Reading goals, notes, ratings, and shelf assignments</li>
+      <li>Badges and achievements you've earned</li>
+      <li>Goodreads import data (if you choose to import)</li>
+    </ul>
+
+    <h3>Usage data</h3>
+    <p>We collect anonymized analytics to understand how the app is used and where to improve:</p>
+    <ul>
+      <li>Which features are used (not the content of your data)</li>
+      <li>App crashes and error logs</li>
+      <li>Device type and OS version (no device identifiers)</li>
+    </ul>
+
+    <h3>What we do NOT collect</h3>
+    <ul>
+      <li>Your precise location</li>
+      <li>Contacts or address book</li>
+      <li>Photos or camera (except the cover images you explicitly upload)</li>
+      <li>Microphone or audio</li>
+      <li>Browsing history outside of Nightstand</li>
+    </ul>
+
+    <h2 id="how-we-use">2. How we use your data</h2>
+
+    <p>We use your data to:</p>
+    <ul>
+      <li>Provide, maintain, and improve the Nightstand app</li>
+      <li>Sync your reading data across your devices</li>
+      <li>Send optional streak reminders and notifications (you control this in Settings)</li>
+      <li>Calculate your reading stats and award badges</li>
+      <li>Respond to support requests</li>
+      <li>Detect and prevent abuse or fraud</li>
+    </ul>
+
+    <p>We do <strong>not</strong> use your data to:</p>
+    <ul>
+      <li>Sell to third parties — ever</li>
+      <li>Serve third-party advertising</li>
+      <li>Build ad profiles or interest graphs</li>
+      <li>Train AI models on your personal reading data</li>
+    </ul>
+
+    <h2 id="third-parties">3. Third-party services</h2>
+
+    <p>Nightstand uses the following third-party services to function. Each has its own privacy policy.</p>
+
+    <h3>Firebase (Google)</h3>
+    <p>We use Firebase for authentication, data storage, and crash reporting. Firebase Auth handles sign-in, Cloud Firestore stores your reading library, and Firebase Crashlytics helps us identify and fix bugs. Google's privacy policy applies: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+    <h3>RevenueCat</h3>
+    <p>RevenueCat processes subscription payments and manages entitlements. RevenueCat receives a pseudonymous user ID (not your email) and your subscription state. RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
+
+    <h3>Google Books API &amp; Open Library</h3>
+    <p>When you search for a book, we query the Google Books API and Open Library to find metadata (title, author, cover, page count). Your search queries are sent to these services. No account information is shared.</p>
+
+    <h3>Apple App Store / Google Play</h3>
+    <p>Payment processing for Premium subscriptions is handled entirely by Apple or Google through their respective app stores. We do not see or store your payment information.</p>
+
+    <h2 id="data-storage">4. Data storage &amp; security</h2>
+
+    <p>Your data is stored in Google Cloud (Firebase) infrastructure in the United States. We use industry-standard security practices including:</p>
+    <ul>
+      <li>Encrypted connections (TLS/HTTPS) for all data in transit</li>
+      <li>Firebase Security Rules to ensure users can only access their own data</li>
+      <li>Firebase Authentication for secure account management</li>
+    </ul>
+
+    <p>No system is 100% secure. If you have concerns, contact us at the address below.</p>
+
+    <h2 id="your-rights">5. Your rights</h2>
+
+    <h3>Account deletion</h3>
+    <p>You can permanently delete your Nightstand account and all associated data directly from the app:</p>
+    <ol>
+      <li>Open Nightstand → Profile tab</li>
+      <li>Scroll to Settings</li>
+      <li>Tap <strong>Delete Account</strong></li>
+      <li>Confirm by typing "DELETE"</li>
+    </ol>
+    <p>Deletion is permanent and removes all your books, sessions, stats, and account data from our servers within 30 days.</p>
+
+    <h3>Data export</h3>
+    <p>You can export your reading data in the app under Profile → Settings → Export Data. This gives you a JSON file with your full reading history.</p>
+
+    <h3>Opt out of analytics</h3>
+    <p>You can opt out of anonymized analytics in Profile → Settings → Privacy.</p>
+
+    <h3>Notification control</h3>
+    <p>All notifications are optional. You can enable or disable streak reminders, badge alerts, and other notifications in Profile → Settings → Notifications.</p>
+
+    <h2 id="children">6. Children's privacy</h2>
+
+    <p>Nightstand is not directed at children under 13 (or under 16 in the EU/UK). We do not knowingly collect personal information from children. If you believe a child has provided us personal information, please contact us and we will delete it promptly.</p>
+
+    <h2 id="changes">7. Changes to this policy</h2>
+
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we'll notify you in the app and update the "Last updated" date at the top of this page. Continued use of Nightstand after changes are posted means you accept the revised policy.</p>
+
+    <h2 id="contact">8. Contact us</h2>
+
+    <p>Questions, concerns, or data requests? We're real people and we'll respond:</p>
+    <p>📧 <a href="mailto:support@nightstandapp.com">support@nightstandapp.com</a></p>
+
+    <hr style="border: none; border-top: 1px solid var(--border); margin: 56px 0 40px;">
+
+    <h2 id="terms">9. Terms of Use</h2>
+
+    <p>By downloading or using Nightstand, you agree to these terms. If you don't agree, please don't use the app.</p>
+
+    <h3>License</h3>
+    <p>We grant you a limited, non-exclusive, non-transferable license to use Nightstand on your personal devices for personal, non-commercial purposes.</p>
+
+    <h3>Acceptable use</h3>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Reverse engineer, decompile, or attempt to extract the source code of the app</li>
+      <li>Use the app for any unlawful purpose</li>
+      <li>Attempt to gain unauthorized access to any part of our systems</li>
+      <li>Scrape or harvest data from the app or API</li>
+    </ul>
+
+    <h3>Subscriptions</h3>
+    <p>Nightstand Premium is a subscription service billed monthly or annually. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current billing period. You can manage and cancel subscriptions through your App Store or Google Play account settings.</p>
+
+    <h3>Disclaimer</h3>
+    <p>Nightstand is provided "as is" without warranties of any kind. We are not liable for any loss of data, interruption of service, or other damages arising from your use of the app.</p>
+
+    <h3>Governing law</h3>
+    <p>These terms are governed by the laws of the State of Colorado, United States, without regard to conflict of law principles.</p>
+
+    <h3>Apple EULA</h3>
+    <p>Use of Nightstand on Apple devices is also subject to Apple's standard <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a>.</p>
+
+    <p style="margin-top: 32px; font-size: 0.88rem; color: var(--text-muted);">Last updated: April 1, 2025</p>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">📚 Nightstand</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+      </div>
+      <p>&copy; 2025 Nightstand. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

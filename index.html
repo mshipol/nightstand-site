@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nightstand — Your Reading Companion</title>
+  <meta name="description" content="Track every book you read, every minute you listen, every streak you build. The reading app for people who actually read.">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1c1917;
+      --warm-white: #fdfaf6;
+      --cream: #f5f0e8;
+      --amber: #d97706;
+      --amber-light: #fbbf24;
+      --brown: #78350f;
+      --brown-mid: #92400e;
+      --sage: #4a5e52;
+      --sage-light: #6b7c72;
+      --text-muted: #6b6560;
+      --border: #e5ddd0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.65;
+      background: var(--warm-white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+    }
+    .nav-brand span { color: var(--amber); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--amber);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--brown-mid); color: #fff; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, #2c1810 0%, #4a2415 40%, #3d3020 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(251,191,36,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(251,191,36,0.2);
+      color: var(--amber-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(251,191,36,0.3);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber-light);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .hero-badges {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .hero-badges span::before { content: '✓ '; color: var(--amber-light); }
+
+    /* ─── SECTION SHELL ─── */
+    section { padding: 88px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ─── PROBLEM ─── */
+    .problem { background: var(--cream); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .problem-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+    }
+    .problem-card .icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .problem-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─── FEATURES ─── */
+    .features-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .features-header .section-sub {
+      margin: 0 auto;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      background: var(--warm-white);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+      border-color: #d4c9b5;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─── COMPARISON ─── */
+    .comparison { background: var(--cream); }
+    .comparison-header { margin-bottom: 52px; }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--warm-white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comp-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      background: var(--cream);
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .comp-table th.ours {
+      background: var(--brown);
+      color: #fff;
+    }
+    .comp-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .comp-table td:first-child {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .comp-table td.ours {
+      background: rgba(217,119,6,0.06);
+      font-weight: 600;
+      color: var(--brown-mid);
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .check { color: #16a34a; }
+    .cross { color: #dc2626; }
+    .partial { color: #d97706; }
+
+    /* ─── PRICING ─── */
+    .pricing-header { text-align: center; margin-bottom: 52px; }
+    .pricing-header .section-sub { margin: 0 auto; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 32px;
+      background: var(--warm-white);
+      text-align: center;
+    }
+    .pricing-card.featured {
+      border-color: var(--amber);
+      background: linear-gradient(160deg, #fff9f0, #fffdf8);
+      box-shadow: 0 8px 40px rgba(217,119,6,0.12);
+      position: relative;
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--amber);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+    .pricing-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 16px;
+    }
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .pricing-price sup {
+      font-size: 1.3rem;
+      font-weight: 700;
+      vertical-align: super;
+      line-height: 1;
+    }
+    .pricing-period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 8px 0 28px;
+    }
+    .pricing-list {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pricing-list li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-list li::before {
+      content: '✓';
+      color: #16a34a;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pricing-list li.muted::before { content: '✗'; color: #d1c9be; }
+    .pricing-list li.muted { opacity: 0.6; }
+    .btn-pricing {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .btn-pricing.outline {
+      border: 2px solid var(--border);
+      color: var(--ink);
+    }
+    .btn-pricing.outline:hover { border-color: var(--amber); color: var(--amber); }
+    .btn-pricing.filled {
+      background: var(--amber);
+      color: #fff;
+    }
+    .btn-pricing.filled:hover { background: var(--brown-mid); }
+
+    /* ─── FOR WHO ─── */
+    .forwhom { background: var(--cream); }
+    .forwhom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .forwhom-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+    }
+    .forwhom-card .persona {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .forwhom-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .forwhom-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, #2c1810, #4a2415);
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .cta-banner h2 em {
+      font-style: normal;
+      color: var(--amber-light);
+    }
+    .cta-banner p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 36px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.55);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .footer-links a { transition: color 0.15s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-brand {
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .comp-table { font-size: 0.78rem; }
+      .comp-table th, .comp-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">📚 Night<span>stand</span></span>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <a href="#download" class="nav-cta">Download Free</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-eyebrow">Now available on iOS &amp; Android</div>
+    <h1>The reading app for people who <em>actually read</em></h1>
+    <p class="hero-sub">
+      Track every book, every session, every streak. Beautiful stats, audiobook support, and badges for the milestones that matter.
+    </p>
+    <div class="hero-actions">
+      <a href="#download" class="btn-primary" id="download">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
+        Download on the App Store
+      </a>
+      <a href="#features" class="btn-secondary">See how it works →</a>
+    </div>
+    <div class="hero-badges">
+      <span>Free to start</span>
+      <span>No account required</span>
+      <span>Works offline</span>
+      <span>iOS &amp; Android</span>
+    </div>
+  </header>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <p class="section-label">The problem</p>
+      <h2 class="section-heading">Readers deserve better tools</h2>
+      <p class="section-sub">Goodreads is 20 years old and it shows. Spreadsheets are a chore. Your reading life deserves something better.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">😩</div>
+          <h3>Goodreads is broken</h3>
+          <p>Built in 2007 and barely updated since. Clunky UI, no real stats, no habit tracking, no audiobook support. Millions of readers use it because there's been nothing better — until now.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">📊</div>
+          <h3>Spreadsheets aren't fun</h3>
+          <p>Some readers track books in Excel. It works, but it's a chore. You shouldn't need a spreadsheet to enjoy reading. You use an app to track your runs — why not your reading?</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🧠</div>
+          <h3>You forget what you've read</h3>
+          <p>Without a log, books blur together. That amazing thriller from two years ago — what was it called? Who wrote it? You loved it. You can't remember it. Nightstand fixes that.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🎧</div>
+          <h3>Audiobooks are second-class</h3>
+          <p>Most trackers treat audiobooks like an afterthought. Nightstand tracks your listening time — hours and minutes — with the same start/stop timer as physical reading.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="features-header">
+        <p class="section-label">Features</p>
+        <h2 class="section-heading">Everything your reading life needs</h2>
+        <p class="section-sub">Simple to start, powerful over time. Built for how readers actually read — on your phone, before bed, wherever the book takes you.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Search 40 million+ books</h3>
+          <p>Find any book by title, author, or scan the ISBN barcode. Covers, page counts, genres, and series info fill in automatically — no typing required.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>Just hit Start</h3>
+          <p>Tap Start when you pick up your book, Stop when you put it down. Nightstand logs your session in the background. You don't even have to keep the app open.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Stats that actually mean something</h3>
+          <p>Books read, pages turned, hours listened, streaks held. See your week, month, year, and all-time numbers on a beautiful dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Streaks &amp; habits</h3>
+          <p>Build a reading habit by tracking your current and longest streaks. The reading calendar heatmap shows every day you read — it's surprisingly motivating.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Earn badges</h3>
+          <p>Reading milestones deserve recognition. Earn achievements for finishing your first book, hitting a 7-day streak, reading 1,000 pages in a month, and more.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📥</div>
+          <h3>Import from Goodreads</h3>
+          <p>Already on Goodreads? Import your entire reading history in seconds — every book you've read, rated, or shelved. Fresh start, zero data loss.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <h3>Works offline</h3>
+          <p>Log your reading anywhere — on a plane, in the woods, wherever. Nightstand syncs everything back when you're online. Your streaks are always safe.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Phone &amp; tablet, beautifully</h3>
+          <p>Nightstand is built for how readers actually read — on a phone before bed, on a tablet on the couch. The layout adapts to fill every screen size.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂️</div>
+          <h3>Organize with shelves</h3>
+          <p>Create custom shelves to organize your library exactly how your brain works — by mood, genre, series, or anything else. Your library, your rules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="comparison">
+    <div class="container">
+      <div class="comparison-header">
+        <p class="section-label">Comparison</p>
+        <h2 class="section-heading">How we stack up</h2>
+        <p class="section-sub">Nightstand does what the other apps don't — or gave up trying.</p>
+      </div>
+      <div style="overflow-x: auto;">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="ours">Nightstand</th>
+              <th>Goodreads</th>
+              <th>StoryGraph</th>
+              <th>Literal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Session timer</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Audiobook time tracking</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Reading streaks &amp; badges</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Calendar heatmap</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Beautiful mobile UX</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="partial">⚠ Partial</td>
+              <td class="check">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Goodreads import</td>
+              <td class="ours check">✓ Yes</td>
+              <td>—</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Offline support</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Tablet optimized</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+              <td class="cross">✗ No</td>
+            </tr>
+            <tr>
+              <td>Reading stats dashboard</td>
+              <td class="ours check">✓ Yes</td>
+              <td class="partial">⚠ Basic</td>
+              <td class="check">✓ Yes</td>
+              <td class="partial">⚠ Basic</td>
+            </tr>
+            <tr>
+              <td>Free tier</td>
+              <td class="ours check">✓ 5 books free</td>
+              <td class="check">✓ Free</td>
+              <td class="check">✓ Free</td>
+              <td class="check">✓ Free</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-header">
+        <p class="section-label">Pricing</p>
+        <h2 class="section-heading">Start free. Stay free, or go unlimited.</h2>
+        <p class="section-sub">No credit card required to start. Premium is less than a cup of coffee per month.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Free</div>
+          <div class="pricing-price">$0</div>
+          <p class="pricing-period">forever</p>
+          <ul class="pricing-list">
+            <li>Up to 5 books</li>
+            <li>Session timer</li>
+            <li>Stats dashboard</li>
+            <li>Streaks &amp; calendar</li>
+            <li>Badges &amp; achievements</li>
+            <li class="muted">Unlimited books</li>
+            <li class="muted">Goodreads import</li>
+          </ul>
+          <a href="#download" class="btn-pricing outline">Get Started Free</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-name">Premium</div>
+          <div class="pricing-price"><sup>$</sup>2<sup>.99</sup></div>
+          <p class="pricing-period">per month · or $19.99/year <strong style="color: var(--amber);">save 44%</strong></p>
+          <ul class="pricing-list">
+            <li>Unlimited books</li>
+            <li>Session timer</li>
+            <li>Stats dashboard</li>
+            <li>Streaks &amp; calendar</li>
+            <li>Badges &amp; achievements</li>
+            <li>Goodreads import</li>
+            <li>7-day free trial</li>
+          </ul>
+          <a href="#download" class="btn-pricing filled">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="forwhom">
+    <div class="container">
+      <p class="section-label">Who it's for</p>
+      <h2 class="section-heading">Built for every kind of reader</h2>
+      <p class="section-sub">From one book a year to one book a week — if you read, Nightstand is for you.</p>
+      <div class="forwhom-grid">
+        <div class="forwhom-card">
+          <div class="persona">📖</div>
+          <h3>The Casual Reader</h3>
+          <p>Reads a few books a year. Wants to remember what they've read and feel good about finishing one.</p>
+        </div>
+        <div class="forwhom-card">
+          <div class="persona">🎯</div>
+          <h3>The Goal Setter</h3>
+          <p>Has a yearly reading goal. Tracks progress obsessively. Loves the streak counter and monthly stats.</p>
+        </div>
+        <div class="forwhom-card">
+          <div class="persona">🎧</div>
+          <h3>The Audiobook Listener</h3>
+          <p>Commutes, exercises, or does chores while listening. Finally a tracker that treats audio as first-class.</p>
+        </div>
+        <div class="forwhom-card">
+          <div class="persona">🚪</div>
+          <h3>The Goodreads Exile</h3>
+          <p>Has years of history on a platform they don't love. Wants something better without losing their data.</p>
+        </div>
+        <div class="forwhom-card">
+          <div class="persona">❤️</div>
+          <h3>The Book Lover</h3>
+          <p>Just loves books. Wants a beautiful, dedicated home for their reading life. That's it. That's enough.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Your books are waiting.<br><em>Pick one up tonight.</em></h2>
+      <p>Free to download. No credit card. Start tracking in seconds.</p>
+      <a href="#download" class="btn-primary" style="display: inline-flex; margin: 0 auto;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
+        Download on the App Store
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">📚 Nightstand</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html#terms">Terms of Use</a>
+      </div>
+      <p>&copy; 2025 Nightstand. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

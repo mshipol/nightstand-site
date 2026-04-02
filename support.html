@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Nightstand</title>
+  <meta name="description" content="Get help with Nightstand — FAQ, troubleshooting, and contact support.">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1c1917;
+      --warm-white: #fdfaf6;
+      --cream: #f5f0e8;
+      --amber: #d97706;
+      --amber-light: #fbbf24;
+      --brown: #78350f;
+      --brown-mid: #92400e;
+      --text-muted: #6b6560;
+      --border: #e5ddd0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.7;
+      background: var(--warm-white);
+    }
+
+    a { color: var(--amber); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--amber); }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.875rem;
+    }
+    .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(160deg, #2c1810 0%, #4a2415 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* LAYOUT */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* CONTACT CTA */
+    .contact-card {
+      background: linear-gradient(135deg, #fdf6ea, #fff9f0);
+      border: 1px solid #f0ddb8;
+      border-radius: 16px;
+      padding: 36px 32px;
+      margin-bottom: 56px;
+      text-align: center;
+    }
+    .contact-card h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      border: none;
+      padding: 0;
+      margin-top: 0;
+    }
+    .contact-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: var(--amber);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .contact-btn:hover { background: var(--brown-mid); text-decoration: none; }
+
+    /* FAQ */
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .faq-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--warm-white);
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+    details[open] {
+      border-color: #d4c9b5;
+    }
+    details summary {
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--ink);
+      user-select: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--amber);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    details[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 20px 18px;
+      font-size: 0.9rem;
+      color: #3d3730;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul { padding-left: 20px; }
+    .faq-answer li { margin-bottom: 4px; }
+    .faq-answer ol { padding-left: 20px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.55);
+      padding: 36px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .footer-links a { color: rgba(255,255,255,0.55); transition: color 0.15s; }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+    .footer-brand { font-weight: 700; color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 6px; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .contact-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">📚 Night<span>stand</span></a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Support</h1>
+    <p>We're here to help. Most answers are below — or just email us.</p>
+  </header>
+
+  <div class="content">
+
+    <div class="contact-card">
+      <h2>Can't find an answer?</h2>
+      <p>We read every email and usually respond within one business day.</p>
+      <a href="mailto:support@nightstandapp.com" class="contact-btn">Email Support</a>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <h2>Getting Started</h2>
+    <div class="faq-group">
+      <details>
+        <summary>How do I add a book?</summary>
+        <div class="faq-answer">
+          <p>Tap the <strong>+</strong> button in the Library tab. You can search by title or author, or tap the barcode icon to scan the ISBN on the back of a physical book. Once you find your book, tap it to confirm — the cover, author, and page count fill in automatically.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I track a reading session?</summary>
+        <div class="faq-answer">
+          <p>Open a book from your library and tap <strong>Start Reading</strong>. Nightstand runs a timer in the background — you don't need to keep the app open. When you stop reading, tap <strong>Stop</strong> (or use the notification in your tray).</p>
+          <p>After stopping, you can edit the session time or pages read if needed.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I track audiobooks?</summary>
+        <div class="faq-answer">
+          <p>When adding or editing a book, set the format to <strong>Audiobook</strong>. The session timer will then track minutes and hours instead of pages. It works exactly the same way — tap Start, tap Stop.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I use Nightstand without an account?</summary>
+        <div class="faq-answer">
+          <p>You can browse the app, but you'll need an account to save books and reading sessions. Creating an account is free and takes about 30 seconds. You can sign up with email, Google, or Apple.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- IMPORTING -->
+    <h2>Importing from Goodreads</h2>
+    <div class="faq-group">
+      <details>
+        <summary>How do I import my Goodreads library?</summary>
+        <div class="faq-answer">
+          <p>First, export your data from Goodreads:</p>
+          <ol>
+            <li>Go to goodreads.com on desktop</li>
+            <li>Click <strong>My Books</strong> → <strong>Import and Export</strong></li>
+            <li>Click <strong>Export Library</strong> — you'll get a CSV file</li>
+          </ol>
+          <p>Then in Nightstand:</p>
+          <ol>
+            <li>Go to Profile → Settings</li>
+            <li>Tap <strong>Import from Goodreads</strong></li>
+            <li>Select the CSV file you downloaded</li>
+          </ol>
+          <p>Your entire reading history, ratings, and shelves will import in seconds.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Will my ratings and shelves import too?</summary>
+        <div class="faq-answer">
+          <p>Yes — ratings, read/currently-reading/want-to-read status, and date finished all import from the Goodreads CSV. Custom shelf names may not map perfectly but your books will all be there.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- SUBSCRIPTIONS -->
+    <h2>Subscriptions &amp; Billing</h2>
+    <div class="faq-group">
+      <details>
+        <summary>What's included in the free tier?</summary>
+        <div class="faq-answer">
+          <p>The free tier lets you add up to <strong>5 books</strong> and includes all core features: session timer, stats dashboard, reading streaks, calendar heatmap, and badges. You can use Nightstand forever for free at this level.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What does Premium add?</summary>
+        <div class="faq-answer">
+          <p>Nightstand Premium removes the 5-book limit and gives you:</p>
+          <ul>
+            <li>Unlimited books in your library</li>
+            <li>Goodreads import</li>
+            <li>Full reading history across all time</li>
+          </ul>
+          <p>All features (stats, streaks, timer, badges) are available on both free and Premium.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I cancel my subscription?</summary>
+        <div class="faq-answer">
+          <p>Subscriptions are managed by Apple or Google, not by Nightstand directly. To cancel:</p>
+          <p><strong>On iPhone/iPad:</strong> Settings app → [Your name] → Subscriptions → Nightstand → Cancel</p>
+          <p><strong>On Android:</strong> Google Play app → Menu → Subscriptions → Nightstand → Cancel</p>
+          <p>Your Premium access continues until the end of the current billing period.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I restore purchases after reinstalling?</summary>
+        <div class="faq-answer">
+          <p>Go to Profile → Settings and tap <strong>Restore Purchases</strong>. Your Premium subscription will be restored automatically as long as you're signed in with the same Apple ID or Google account.</p>
+        </div>
+      </details>
+      <details>
+        <summary>I was charged but Premium isn't showing. What do I do?</summary>
+        <div class="faq-answer">
+          <p>Try tapping <strong>Restore Purchases</strong> in Profile → Settings. If that doesn't work, email us at <a href="mailto:support@nightstandapp.com">support@nightstandapp.com</a> with your account email and we'll sort it out quickly.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- DATA & ACCOUNT -->
+    <h2>Data &amp; Account</h2>
+    <div class="faq-group">
+      <details>
+        <summary>How do I delete my account?</summary>
+        <div class="faq-answer">
+          <p>You can permanently delete your account from within the app:</p>
+          <ol>
+            <li>Open Nightstand → tap the <strong>Profile</strong> tab</li>
+            <li>Scroll down to Settings</li>
+            <li>Tap <strong>Delete Account</strong></li>
+            <li>Read the warning, then type <strong>DELETE</strong> to confirm</li>
+          </ol>
+          <p>This permanently removes all your books, reading sessions, stats, and account data. This cannot be undone.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I export my reading data?</summary>
+        <div class="faq-answer">
+          <p>Yes — go to Profile → Settings → <strong>Export Data</strong>. You'll get a JSON file with your complete reading history that you can keep for your records.</p>
+        </div>
+      </details>
+      <details>
+        <summary>My reading streak disappeared. What happened?</summary>
+        <div class="faq-answer">
+          <p>A streak requires at least one logged reading session per day. If you missed a day (midnight to midnight in your local timezone), the streak resets. The app uses your device's timezone for streak calculations.</p>
+          <p>If you believe your streak disappeared due to a bug, email us with your account email and the approximate date — we'll look into it.</p>
+        </div>
+      </details>
+      <details>
+        <summary>My data isn't syncing across devices. Help!</summary>
+        <div class="faq-answer">
+          <p>Make sure you're signed in to the same account on both devices. Then try:</p>
+          <ol>
+            <li>Pull down to refresh on the Library screen</li>
+            <li>Check that you have an internet connection</li>
+            <li>Force-quit the app and reopen it</li>
+          </ol>
+          <p>If data still isn't syncing, email us at <a href="mailto:support@nightstandapp.com">support@nightstandapp.com</a>.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- TECHNICAL -->
+    <h2>Technical Issues</h2>
+    <div class="faq-group">
+      <details>
+        <summary>The app is crashing or freezing. What should I do?</summary>
+        <div class="faq-answer">
+          <p>Try these steps in order:</p>
+          <ol>
+            <li>Force-quit the app and reopen it</li>
+            <li>Restart your device</li>
+            <li>Check for an app update in the App Store or Google Play</li>
+            <li>Uninstall and reinstall the app (your data is saved to the cloud — it will restore when you sign back in)</li>
+          </ol>
+          <p>Still crashing? Email <a href="mailto:support@nightstandapp.com">support@nightstandapp.com</a> with your device model, OS version, and what you were doing when it crashed.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Book covers aren't loading.</summary>
+        <div class="faq-answer">
+          <p>Cover images load from the internet. Check that you have a stable connection. If covers are consistently missing for a specific book, you can upload a custom cover: open the book → tap the cover image → choose a photo from your camera roll.</p>
+        </div>
+      </details>
+      <details>
+        <summary>I can't find a book I'm looking for.</summary>
+        <div class="faq-answer">
+          <p>Nightstand searches Google Books and Open Library. If a book isn't showing up, try:</p>
+          <ul>
+            <li>Search by ISBN (scan the barcode on the back of the book)</li>
+            <li>Try the full title without subtitle</li>
+            <li>Search by author name only</li>
+          </ul>
+          <p>If the book truly isn't in either database (rare for older or self-published titles), you can add it manually: tap <strong>Add manually</strong> at the bottom of search results and fill in the details yourself.</p>
+        </div>
+      </details>
+      <details>
+        <summary>The session timer stopped while I was reading.</summary>
+        <div class="faq-answer">
+          <p>Make sure you haven't disabled background app activity for Nightstand on your device. The timer runs as a background service, but some aggressive battery-saving modes can stop it.</p>
+          <p><strong>iPhone:</strong> Settings → Nightstand → Background App Refresh → On</p>
+          <p><strong>Android:</strong> Settings → Apps → Nightstand → Battery → Allow background activity</p>
+          <p>You can always manually edit a session's time if the timer was cut short.</p>
+        </div>
+      </details>
+    </div>
+
+    <div style="margin-top: 56px; padding: 32px; background: var(--cream); border-radius: 16px; text-align: center;">
+      <p style="font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Still stuck?</p>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">We're a small team and we genuinely care about fixing problems. Drop us a line.</p>
+      <a href="mailto:support@nightstandapp.com" class="contact-btn">support@nightstandapp.com</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">📚 Nightstand</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+      </div>
+      <p>&copy; 2025 Nightstand. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
