@@ -3,34 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nightstand — Your Reading Companion</title>
-  <meta name="description" content="Track every book you read, every minute you listen, every streak you build. The reading app for people who actually read.">
-  <link rel="icon" type="image/png" href="images/icon.png">
+  <title>Nightstand — Your Personal Reading Companion</title>
+  <meta name="description" content="Nightstand is a personal reading companion for iOS that helps readers track their books, build consistent reading habits, and celebrate milestones — without the noise of social networks.">
+  <link rel="icon" type="image/jpg" href="images/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      --navy: #2B3A67;
+      --navy-dark: #1e2a4a;
+      --navy-deeper: #162040;
+      --gold: #D4A84B;
+      --gold-light: #e4c47a;
+      --cream: #EDE0C8;
+      --cream-light: #f5efe3;
+      --cream-bg: #faf7f2;
+      --lavender: #8B7AAF;
+      --lavender-light: #a898c8;
       --ink: #1c1917;
-      --warm-white: #fdfaf6;
-      --cream: #f5f0e8;
-      --amber: #d97706;
-      --amber-light: #fbbf24;
-      --brown: #78350f;
-      --brown-mid: #92400e;
-      --sage: #4a5e52;
-      --sage-light: #6b7c72;
       --text-muted: #6b6560;
-      --border: #e5ddd0;
+      --border: #e0d8cc;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
       line-height: 1.65;
-      background: var(--warm-white);
+      background: var(--cream-bg);
     }
+
+    h1, h2, h3, .nav-brand, .pricing-name { font-family: 'Playfair Display', Georgia, serif; }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -40,7 +47,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(253, 250, 246, 0.92);
+      background: rgba(250, 247, 242, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
@@ -51,36 +58,43 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 64px;
     }
     .nav-brand {
-      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--brown);
+      color: var(--navy);
       letter-spacing: -0.01em;
     }
-    .nav-brand span { color: var(--amber); }
+    .nav-brand img {
+      height: 32px;
+      width: auto;
+    }
     .nav-links {
       display: flex;
       gap: 28px;
       font-size: 0.875rem;
+      font-weight: 600;
       color: var(--text-muted);
     }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover { color: var(--navy); }
     .nav-cta {
-      background: var(--amber);
-      color: #fff;
-      padding: 8px 18px;
+      background: var(--navy);
+      color: var(--cream);
+      padding: 9px 20px;
       border-radius: 20px;
       font-size: 0.875rem;
-      font-weight: 600;
+      font-weight: 700;
       transition: background 0.15s;
     }
-    .nav-cta:hover { background: var(--brown-mid); color: #fff; }
+    .nav-cta:hover { background: var(--navy-dark); color: #fff; }
 
     /* ─── HERO ─── */
     .hero {
-      background: linear-gradient(160deg, #2c1810 0%, #4a2415 40%, #3d3020 100%);
+      background: linear-gradient(160deg, var(--navy-deeper) 0%, var(--navy) 50%, #3a4a7a 100%);
       color: #fff;
       text-align: center;
       padding: 100px 24px 80px;
@@ -91,20 +105,27 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(251,191,36,0.15) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,75,0.18) 0%, transparent 60%);
       pointer-events: none;
+    }
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
     .hero-eyebrow {
       display: inline-block;
-      background: rgba(251,191,36,0.2);
-      color: var(--amber-light);
+      background: rgba(212,168,75,0.2);
+      color: var(--gold-light);
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 5px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(251,191,36,0.3);
+      border: 1px solid rgba(212,168,75,0.35);
       margin-bottom: 28px;
     }
     .hero h1 {
@@ -113,18 +134,18 @@
       letter-spacing: -0.03em;
       line-height: 1.15;
       margin-bottom: 20px;
-      max-width: 700px;
+      max-width: 750px;
       margin-left: auto;
       margin-right: auto;
     }
     .hero h1 em {
       font-style: normal;
-      color: var(--amber-light);
+      color: var(--gold-light);
     }
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.2rem);
       color: rgba(255,255,255,0.72);
-      max-width: 520px;
+      max-width: 560px;
       margin: 0 auto 40px;
       line-height: 1.7;
     }
@@ -139,15 +160,15 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--amber);
-      color: #fff;
+      background: var(--gold);
+      color: var(--navy-deeper);
       font-weight: 700;
       font-size: 1rem;
       padding: 14px 28px;
       border-radius: 12px;
       transition: background 0.15s, transform 0.1s;
     }
-    .btn-primary:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -170,7 +191,7 @@
       font-size: 0.82rem;
       color: rgba(255,255,255,0.5);
     }
-    .hero-badges span::before { content: '✓ '; color: var(--amber-light); }
+    .hero-badges span::before { content: '\2713\00a0'; color: var(--gold-light); }
 
     /* ─── SECTION SHELL ─── */
     section { padding: 88px 24px; }
@@ -180,7 +201,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--amber);
+      color: var(--gold);
       margin-bottom: 12px;
     }
     .section-heading {
@@ -188,7 +209,7 @@
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.2;
-      color: var(--ink);
+      color: var(--navy);
       margin-bottom: 16px;
     }
     .section-sub {
@@ -198,8 +219,36 @@
       line-height: 1.7;
     }
 
+    /* ─── SCREENSHOTS ─── */
+    .screenshots {
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .screenshots-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .screenshots-header .section-sub { margin: 0 auto; }
+    .screenshots-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 24px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .screenshots-scroll::-webkit-scrollbar { display: none; }
+    .screenshots-scroll img {
+      flex: 0 0 auto;
+      width: 240px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      scroll-snap-align: center;
+    }
+
     /* ─── PROBLEM ─── */
-    .problem { background: var(--cream); }
+    .problem { background: var(--cream-bg); }
     .problem-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -207,20 +256,27 @@
       margin-top: 52px;
     }
     .problem-card {
-      background: var(--warm-white);
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 32px 28px;
     }
     .problem-card .icon {
-      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(43,58,103,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
       margin-bottom: 16px;
     }
     .problem-card h3 {
       font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 10px;
-      color: var(--ink);
+      color: var(--navy);
     }
     .problem-card p {
       font-size: 0.9rem;
@@ -229,6 +285,7 @@
     }
 
     /* ─── FEATURES ─── */
+    .features { background: var(--cream); }
     .features-header {
       text-align: center;
       margin-bottom: 60px;
@@ -245,21 +302,29 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 32px 28px;
-      background: var(--warm-white);
+      background: #fff;
       transition: box-shadow 0.2s, border-color 0.2s;
     }
     .feature-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
-      border-color: #d4c9b5;
+      box-shadow: 0 8px 32px rgba(43,58,103,0.1);
+      border-color: var(--lavender);
     }
     .feature-icon {
-      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(43,58,103,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
       margin-bottom: 18px;
     }
     .feature-card h3 {
       font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 10px;
+      color: var(--navy);
     }
     .feature-card p {
       font-size: 0.9rem;
@@ -267,53 +332,35 @@
       line-height: 1.65;
     }
 
-    /* ─── COMPARISON ─── */
-    .comparison { background: var(--cream); }
-    .comparison-header { margin-bottom: 52px; }
-    .comp-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      background: var(--warm-white);
-      border-radius: 16px;
-      overflow: hidden;
+    /* ─── DIFFERENTIATORS ─── */
+    .differentiators { background: var(--cream-bg); }
+    .diff-header { margin-bottom: 52px; }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .diff-card {
+      background: #fff;
       border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border-left: 4px solid var(--gold);
     }
-    .comp-table th {
-      padding: 16px 20px;
-      text-align: left;
+    .diff-card h3 {
+      font-size: 1.05rem;
       font-weight: 700;
-      font-size: 0.82rem;
-      background: var(--cream);
+      margin-bottom: 10px;
+      color: var(--navy);
+    }
+    .diff-card p {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      line-height: 1.65;
     }
-    .comp-table th.ours {
-      background: var(--brown);
-      color: #fff;
-    }
-    .comp-table td {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-    .comp-table td:first-child {
-      color: var(--ink);
-      font-weight: 500;
-    }
-    .comp-table td.ours {
-      background: rgba(217,119,6,0.06);
-      font-weight: 600;
-      color: var(--brown-mid);
-    }
-    .comp-table tr:last-child td { border-bottom: none; }
-    .check { color: #16a34a; }
-    .cross { color: #dc2626; }
-    .partial { color: #d97706; }
 
     /* ─── PRICING ─── */
+    .pricing { background: var(--cream); }
     .pricing-header { text-align: center; margin-bottom: 52px; }
     .pricing-header .section-sub { margin: 0 auto; }
     .pricing-grid {
@@ -327,13 +374,13 @@
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 40px 32px;
-      background: var(--warm-white);
+      background: #fff;
       text-align: center;
     }
     .pricing-card.featured {
-      border-color: var(--amber);
-      background: linear-gradient(160deg, #fff9f0, #fffdf8);
-      box-shadow: 0 8px 40px rgba(217,119,6,0.12);
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #fdf8ef, #fffdf8);
+      box-shadow: 0 8px 40px rgba(212,168,75,0.15);
       position: relative;
     }
     .pricing-badge {
@@ -341,8 +388,8 @@
       top: -13px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--amber);
-      color: #fff;
+      background: var(--gold);
+      color: var(--navy-deeper);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -351,9 +398,9 @@
       border-radius: 20px;
     }
     .pricing-name {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--navy);
       text-transform: uppercase;
       letter-spacing: 0.07em;
       margin-bottom: 16px;
@@ -361,7 +408,7 @@
     .pricing-price {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--ink);
+      color: var(--navy);
       letter-spacing: -0.03em;
       line-height: 1;
     }
@@ -392,12 +439,12 @@
       gap: 10px;
     }
     .pricing-list li::before {
-      content: '✓';
+      content: '\2713';
       color: #16a34a;
       font-weight: 700;
       flex-shrink: 0;
     }
-    .pricing-list li.muted::before { content: '✗'; color: #d1c9be; }
+    .pricing-list li.muted::before { content: '\2717'; color: #d1c9be; }
     .pricing-list li.muted { opacity: 0.6; }
     .btn-pricing {
       display: block;
@@ -411,17 +458,17 @@
     }
     .btn-pricing.outline {
       border: 2px solid var(--border);
-      color: var(--ink);
+      color: var(--navy);
     }
-    .btn-pricing.outline:hover { border-color: var(--amber); color: var(--amber); }
+    .btn-pricing.outline:hover { border-color: var(--gold); color: var(--gold); }
     .btn-pricing.filled {
-      background: var(--amber);
-      color: #fff;
+      background: var(--gold);
+      color: var(--navy-deeper);
     }
-    .btn-pricing.filled:hover { background: var(--brown-mid); }
+    .btn-pricing.filled:hover { background: var(--gold-light); }
 
     /* ─── FOR WHO ─── */
-    .forwhom { background: var(--cream); }
+    .forwhom { background: var(--cream-bg); }
     .forwhom-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -429,19 +476,27 @@
       margin-top: 52px;
     }
     .forwhom-card {
-      background: var(--warm-white);
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 28px 24px;
     }
     .forwhom-card .persona {
-      font-size: 1.6rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(139,122,175,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
       margin-bottom: 12px;
     }
     .forwhom-card h3 {
       font-size: 0.95rem;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--navy);
     }
     .forwhom-card p {
       font-size: 0.86rem;
@@ -451,30 +506,41 @@
 
     /* ─── CTA BANNER ─── */
     .cta-banner {
-      background: linear-gradient(135deg, #2c1810, #4a2415);
+      background: linear-gradient(135deg, var(--navy-deeper), var(--navy), #3a4a7a);
       color: #fff;
       text-align: center;
       padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(212,168,75,0.12) 0%, transparent 60%);
+      pointer-events: none;
     }
     .cta-banner h2 {
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
       letter-spacing: -0.025em;
       margin-bottom: 16px;
+      position: relative;
     }
     .cta-banner h2 em {
       font-style: normal;
-      color: var(--amber-light);
+      color: var(--gold-light);
     }
     .cta-banner p {
       font-size: 1.05rem;
       color: rgba(255,255,255,0.68);
       margin-bottom: 36px;
+      position: relative;
     }
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--ink);
+      background: var(--navy-deeper);
       color: rgba(255,255,255,0.55);
       padding: 40px 24px;
       text-align: center;
@@ -492,20 +558,28 @@
       margin-bottom: 16px;
     }
     .footer-links a { transition: color 0.15s; }
-    .footer-links a:hover { color: #fff; }
+    .footer-links a:hover { color: var(--gold-light); }
     .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       font-weight: 700;
       color: rgba(255,255,255,0.8);
       font-size: 0.95rem;
       margin-bottom: 6px;
+    }
+    .footer-brand img {
+      height: 24px;
+      width: auto;
+      opacity: 0.8;
     }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
       section { padding: 64px 20px; }
-      .comp-table { font-size: 0.78rem; }
-      .comp-table th, .comp-table td { padding: 10px 12px; }
+      .screenshots-scroll img { width: 200px; }
     }
   </style>
 </head>
@@ -514,7 +588,9 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <span class="nav-brand">📚 Night<span>stand</span></span>
+      <a href="/" class="nav-brand">
+        <img src="images/nightstand.png" alt="Nightstand logo">
+      </a>
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
@@ -527,59 +603,83 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-eyebrow">Now available on iOS &amp; Android</div>
-    <h1>The reading app for people who <em>actually read</em></h1>
+    <img src="images/icon.jpg" alt="Nightstand app icon" class="hero-icon">
+    <div class="hero-eyebrow">Now available on the App Store</div>
+    <h1>Your personal <em>reading companion</em></h1>
     <p class="hero-sub">
-      Track every book, every session, every streak. Beautiful stats, audiobook support, and badges for the milestones that matter.
+      Track your books, build consistent reading habits, and celebrate milestones — without the noise of social networks. Every book has a story. So does yours.
     </p>
     <div class="hero-actions">
       <a href="#download" class="btn-primary" id="download">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
         Download on the App Store
       </a>
-      <a href="#features" class="btn-secondary">See how it works →</a>
+      <a href="#features" class="btn-secondary">See how it works</a>
     </div>
     <div class="hero-badges">
       <span>Free to start</span>
-      <span>No account required</span>
-      <span>Works offline</span>
-      <span>iOS &amp; Android</span>
+      <span>Privacy-first</span>
+      <span>No social noise</span>
+      <span>iOS</span>
     </div>
   </header>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots">
+    <div class="container">
+      <div class="screenshots-header">
+        <p class="section-label">See it in action</p>
+        <h2 class="section-heading">Beautiful by design</h2>
+        <p class="section-sub">A reading app that feels like settling into a reading chair — not a productivity dashboard.</p>
+      </div>
+    </div>
+    <div class="screenshots-scroll">
+      <img src="images/nightstand-10.png" alt="Dashboard with streak tracking">
+      <img src="images/nightstand-06.png" alt="Reading stats and genre breakdown">
+      <img src="images/nightstand-02.png" alt="Library grid view with book covers">
+      <img src="images/nightstand-08.png" alt="Bookshelf view with spine colors">
+      <img src="images/nightstand-09.png" alt="Grouped shelves view">
+      <img src="images/nightstand-07.png" alt="Library list view">
+      <img src="images/nightstand-03.png" alt="Reading habits calendar">
+      <img src="images/nightstand-04.png" alt="Monthly reading stats">
+      <img src="images/nightstand-05.png" alt="Profile and settings">
+      <img src="images/nightstand-01.png" alt="Confetti celebration on milestone">
+    </div>
+  </section>
 
   <!-- PROBLEM -->
   <section class="problem" id="problem">
     <div class="container">
       <p class="section-label">The problem</p>
       <h2 class="section-heading">Readers deserve better tools</h2>
-      <p class="section-sub">Goodreads is 20 years old and it shows. Spreadsheets are a chore. Your reading life deserves something better.</p>
+      <p class="section-sub">Goodreads is 20 years old and it shows. Your reading life deserves something more personal, more beautiful, more private.</p>
       <div class="problem-grid">
         <div class="problem-card">
           <div class="icon">😩</div>
-          <h3>Goodreads is broken</h3>
-          <p>Built in 2007 and barely updated since. Clunky UI, no real stats, no habit tracking, no audiobook support. Millions of readers use it because there's been nothing better — until now.</p>
+          <h3>Goodreads is a social network</h3>
+          <p>Public profiles, followers, feeds of other people's opinions. You just wanted to track what you're reading — not perform for an audience.</p>
         </div>
         <div class="problem-card">
           <div class="icon">📊</div>
           <h3>Spreadsheets aren't fun</h3>
-          <p>Some readers track books in Excel. It works, but it's a chore. You shouldn't need a spreadsheet to enjoy reading. You use an app to track your runs — why not your reading?</p>
+          <p>Some readers track books in Excel. It works, but it's a chore. You use an app to track your runs — why not your reading?</p>
         </div>
         <div class="problem-card">
           <div class="icon">🧠</div>
           <h3>You forget what you've read</h3>
-          <p>Without a log, books blur together. That amazing thriller from two years ago — what was it called? Who wrote it? You loved it. You can't remember it. Nightstand fixes that.</p>
+          <p>Without a log, books blur together. That amazing thriller from two years ago — what was it called? Nightstand remembers so you don't have to.</p>
         </div>
         <div class="problem-card">
           <div class="icon">🎧</div>
           <h3>Audiobooks are second-class</h3>
-          <p>Most trackers treat audiobooks like an afterthought. Nightstand tracks your listening time — hours and minutes — with the same start/stop timer as physical reading.</p>
+          <p>Most trackers treat audiobooks like an afterthought. Nightstand tracks your listening time with the same session timer as physical reading.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section id="features">
+  <section class="features" id="features">
     <div class="container">
       <div class="features-header">
         <p class="section-label">Features</p>
@@ -589,156 +689,97 @@
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🔍</div>
-          <h3>Search 40 million+ books</h3>
-          <p>Find any book by title, author, or scan the ISBN barcode. Covers, page counts, genres, and series info fill in automatically — no typing required.</p>
+          <h3>Search & scan to add books</h3>
+          <p>Find any book via Google Books or scan the ISBN barcode. Covers, page counts, genres, and series info fill in automatically.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⏱️</div>
-          <h3>Just hit Start</h3>
-          <p>Tap Start when you pick up your book, Stop when you put it down. Nightstand logs your session in the background. You don't even have to keep the app open.</p>
+          <h3>Built-in reading timer</h3>
+          <p>Tap Start when you pick up your book, Stop when you put it down. Nightstand logs your time, pages, and progress automatically.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
           <h3>Stats that actually mean something</h3>
-          <p>Books read, pages turned, hours listened, streaks held. See your week, month, year, and all-time numbers on a beautiful dashboard.</p>
+          <p>Streak tracking, yearly goal progress, genre breakdown donut charts, author diversity, and period-based stats — week, month, year, all-time.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔥</div>
-          <h3>Streaks &amp; habits</h3>
-          <p>Build a reading habit by tracking your current and longest streaks. The reading calendar heatmap shows every day you read — it's surprisingly motivating.</p>
+          <h3>Streaks & habits calendar</h3>
+          <p>Build a reading habit by tracking streaks. The visual heatmap calendar shows every day you read — it's surprisingly motivating.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏆</div>
-          <h3>Earn badges</h3>
-          <p>Reading milestones deserve recognition. Earn achievements for finishing your first book, hitting a 7-day streak, reading 1,000 pages in a month, and more.</p>
+          <h3>48 achievement badges</h3>
+          <p>Earn badges across 10 categories — books completed, pages read, reading hours, streaks, genre firsts, author loyalty, audiobooks, and more. Confetti included.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Beautiful bookshelf view</h3>
+          <p>See your library as a bookshelf with color-extracted spines from book covers — or theme-matched colors for a cohesive aesthetic.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂️</div>
+          <h3>Organize your way</h3>
+          <p>Custom shelves, tags, formats (physical, ebook, audiobook), sources (owned, Libby, borrowed, Kindle), and status tracking. Your library, your rules.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>4 beautiful themes</h3>
+          <p>Nightstand (navy/gold), Timeless Classics (warm browns), Autumn Leaves (burnt orange), or Soft Pastels (rose/cream). Light and dark mode with system-default option.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📥</div>
           <h3>Import from Goodreads</h3>
-          <p>Already on Goodreads? Import your entire reading history in seconds — every book you've read, rated, or shelved. Fresh start, zero data loss.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📡</div>
-          <h3>Works offline</h3>
-          <p>Log your reading anywhere — on a plane, in the woods, wherever. Nightstand syncs everything back when you're online. Your streaks are always safe.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h3>Phone &amp; tablet, beautifully</h3>
-          <p>Nightstand is built for how readers actually read — on a phone before bed, on a tablet on the couch. The layout adapts to fill every screen size.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🗂️</div>
-          <h3>Organize with shelves</h3>
-          <p>Create custom shelves to organize your library exactly how your brain works — by mood, genre, series, or anything else. Your library, your rules.</p>
+          <p>Already on Goodreads? Import your entire reading history via CSV in seconds. Fresh start, zero data loss. Exclude imported books from stats if you want a clean slate.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMPARISON -->
-  <section class="comparison">
+  <!-- DIFFERENTIATORS -->
+  <section class="differentiators">
     <div class="container">
-      <div class="comparison-header">
-        <p class="section-label">Comparison</p>
-        <h2 class="section-heading">How we stack up</h2>
-        <p class="section-sub">Nightstand does what the other apps don't — or gave up trying.</p>
+      <div class="diff-header">
+        <p class="section-label">What makes us different</p>
+        <h2 class="section-heading">Not another Goodreads</h2>
+        <p class="section-sub">Nightstand is built for readers who want a beautiful, private, distraction-free way to track their reading life.</p>
       </div>
-      <div style="overflow-x: auto;">
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th class="ours">Nightstand</th>
-              <th>Goodreads</th>
-              <th>StoryGraph</th>
-              <th>Literal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Session timer</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Audiobook time tracking</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Reading streaks &amp; badges</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Calendar heatmap</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Beautiful mobile UX</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="partial">⚠ Partial</td>
-              <td class="check">✓ Yes</td>
-            </tr>
-            <tr>
-              <td>Goodreads import</td>
-              <td class="ours check">✓ Yes</td>
-              <td>—</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-            </tr>
-            <tr>
-              <td>Offline support</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Tablet optimized</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-              <td class="cross">✗ No</td>
-            </tr>
-            <tr>
-              <td>Reading stats dashboard</td>
-              <td class="ours check">✓ Yes</td>
-              <td class="partial">⚠ Basic</td>
-              <td class="check">✓ Yes</td>
-              <td class="partial">⚠ Basic</td>
-            </tr>
-            <tr>
-              <td>Free tier</td>
-              <td class="ours check">✓ 5 books free</td>
-              <td class="check">✓ Free</td>
-              <td class="check">✓ Free</td>
-              <td class="check">✓ Free</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <h3>Privacy-first</h3>
+          <p>No public profiles, no social feed, no followers. Your reading life is yours. Full account deletion with complete server-side data wipe.</p>
+        </div>
+        <div class="diff-card">
+          <h3>Real achievement variety</h3>
+          <p>48 badges that go beyond "read X books" — genre exploration, author loyalty, midnight reading sessions, 800+ page books. Confetti celebrations and push notifications when earned.</p>
+        </div>
+        <div class="diff-card">
+          <h3>Cover-extracted spine colors</h3>
+          <p>The bookshelf view pulls colors from your actual book covers to create realistic spines. Or choose theme-matched colors for a cohesive library look.</p>
+        </div>
+        <div class="diff-card">
+          <h3>Flexible stats control</h3>
+          <p>Exclude imports or old books from your stats so your metrics reflect your current reading life. Per-book toggle or bulk "start counting from" date picker.</p>
+        </div>
+        <div class="diff-card">
+          <h3>Audiobooks are first-class</h3>
+          <p>Track listening time with the same session timer as physical books. Hours and minutes, pages and progress — audiobooks get equal treatment.</p>
+        </div>
+        <div class="diff-card">
+          <h3>Your data, your way</h3>
+          <p>Import from Goodreads via CSV. Set reading goals. Upload a profile photo. Customize your reading experience — Nightstand adapts to you.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section id="pricing">
+  <section class="pricing" id="pricing">
     <div class="container">
       <div class="pricing-header">
         <p class="section-label">Pricing</p>
         <h2 class="section-heading">Start free. Stay free, or go unlimited.</h2>
-        <p class="section-sub">No credit card required to start. Premium is less than a cup of coffee per month.</p>
+        <p class="section-sub">No credit card required. Premium is less than a cup of coffee per month.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -747,23 +788,25 @@
           <p class="pricing-period">forever</p>
           <ul class="pricing-list">
             <li>Up to 5 books</li>
+            <li>Full feature access</li>
             <li>Session timer</li>
             <li>Stats dashboard</li>
             <li>Streaks &amp; calendar</li>
             <li>Badges &amp; achievements</li>
             <li class="muted">Unlimited books</li>
-            <li class="muted">Goodreads import</li>
+            <li class="muted">Complete reading history</li>
           </ul>
           <a href="#download" class="btn-pricing outline">Get Started Free</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
           <div class="pricing-name">Premium</div>
-          <div class="pricing-price"><sup>$</sup>2<sup>.99</sup></div>
-          <p class="pricing-period">per month · or $19.99/year <strong style="color: var(--amber);">save 44%</strong></p>
+          <div class="pricing-price"><sup>$</sup>3<sup>.99</sup></div>
+          <p class="pricing-period">per month &middot; or $24.99/year <strong style="color: var(--gold);">save 48%</strong></p>
           <ul class="pricing-list">
             <li>Unlimited books</li>
-            <li>Session timer</li>
+            <li>Complete reading history</li>
+            <li>Full feature access</li>
             <li>Stats dashboard</li>
             <li>Streaks &amp; calendar</li>
             <li>Badges &amp; achievements</li>
@@ -781,7 +824,7 @@
     <div class="container">
       <p class="section-label">Who it's for</p>
       <h2 class="section-heading">Built for every kind of reader</h2>
-      <p class="section-sub">From one book a year to one book a week — if you read, Nightstand is for you.</p>
+      <p class="section-sub">The person who keeps a stack of books on their actual nightstand.</p>
       <div class="forwhom-grid">
         <div class="forwhom-card">
           <div class="persona">📖</div>
@@ -805,8 +848,8 @@
         </div>
         <div class="forwhom-card">
           <div class="persona">❤️</div>
-          <h3>The Book Lover</h3>
-          <p>Just loves books. Wants a beautiful, dedicated home for their reading life. That's it. That's enough.</p>
+          <h3>The Privacy-Minded</h3>
+          <p>Doesn't want a social network for reading. Just a beautiful, private home for their reading life. That's it.</p>
         </div>
       </div>
     </div>
@@ -816,8 +859,8 @@
   <section class="cta-banner">
     <div class="container">
       <h2>Your books are waiting.<br><em>Pick one up tonight.</em></h2>
-      <p>Free to download. No credit card. Start tracking in seconds.</p>
-      <a href="#download" class="btn-primary" style="display: inline-flex; margin: 0 auto;">
+      <p>Read more. Track beautifully. Free to download, no credit card required.</p>
+      <a href="#download" class="btn-primary" style="display: inline-flex; margin: 0 auto; position: relative;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
         Download on the App Store
       </a>
@@ -827,13 +870,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">📚 Nightstand</div>
+      <div class="footer-brand">
+        <img src="images/nightstand.png" alt="Nightstand">
+      </div>
       <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="support.html">Support</a>
         <a href="privacy.html#terms">Terms of Use</a>
       </div>
-      <p>&copy; 2025 Nightstand. All rights reserved.</p>
+      <p>&copy; 2025 Radiant Software. All rights reserved.</p>
     </div>
   </footer>
 
