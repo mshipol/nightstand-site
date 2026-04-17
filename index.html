@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nightstand — Your Personal Reading Companion</title>
-  <meta name="description" content="Nightstand is a personal reading companion for iOS that helps readers track their books, build consistent reading habits, and celebrate milestones — without the noise of social networks.">
+  <title>Nightstand — The Reading Companion for People Who Actually Read</title>
+  <meta name="description" content="Nightstand is the reading companion for people who actually read. Track your books, log sessions, earn 48 badges, share beautiful review cards, and import from Goodreads. iPhone only. Free to start.">
   <link rel="icon" type="image/jpg" href="images/icon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,6 +332,52 @@
       line-height: 1.65;
     }
 
+    /* ─── COMPARISON ─── */
+    .comparison { background: var(--cream-bg); }
+    .comparison-header { margin-bottom: 52px; }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comp-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      background: var(--cream);
+      color: var(--navy);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .comp-table th.ours {
+      background: var(--navy);
+      color: var(--cream);
+    }
+    .comp-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .comp-table td:first-child {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .comp-table td.ours {
+      background: rgba(212,168,75,0.08);
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .check { color: #16a34a; }
+    .cross { color: #c2b8a8; }
+    .partial { color: var(--gold); }
+
     /* ─── DIFFERENTIATORS ─── */
     .differentiators { background: var(--cream-bg); }
     .diff-header { margin-bottom: 52px; }
@@ -580,6 +626,8 @@
       .nav-links { display: none; }
       section { padding: 64px 20px; }
       .screenshots-scroll img { width: 200px; }
+      .comp-table { font-size: 0.78rem; }
+      .comp-table th, .comp-table td { padding: 10px 12px; }
     }
   </style>
 </head>
@@ -597,7 +645,7 @@
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy</a>
       </div>
-      <a href="#download" class="nav-cta">Download Free</a>
+      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="nav-cta">Download Free</a>
     </div>
   </nav>
 
@@ -605,12 +653,12 @@
   <header class="hero">
     <img src="images/icon.jpg" alt="Nightstand app icon" class="hero-icon">
     <div class="hero-eyebrow">Now available on the App Store</div>
-    <h1>Your personal <em>reading companion</em></h1>
+    <h1>The reading companion for people who <em>actually read</em></h1>
     <p class="hero-sub">
-      Track your books, build consistent reading habits, and celebrate milestones — without the noise of social networks. Every book has a story. So does yours.
+      Track every book. Log every session. Earn 48 badges. Share beautiful review cards. Import from Goodreads in seconds. Your reading life, beautifully kept.
     </p>
     <div class="hero-actions">
-      <a href="#download" class="btn-primary" id="download">
+      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
         Download on the App Store
       </a>
@@ -619,8 +667,8 @@
     <div class="hero-badges">
       <span>Free to start</span>
       <span>Privacy-first</span>
-      <span>No social noise</span>
-      <span>iOS</span>
+      <span>No social feed</span>
+      <span>iPhone (iOS 16+)</span>
     </div>
   </header>
 
@@ -652,27 +700,27 @@
     <div class="container">
       <p class="section-label">The problem</p>
       <h2 class="section-heading">Readers deserve better tools</h2>
-      <p class="section-sub">Goodreads is 20 years old and it shows. Your reading life deserves something more personal, more beautiful, more private.</p>
+      <p class="section-sub">You have a stack on your nightstand, a list in your head, and a Goodreads account you haven't touched in two years. There's a better way.</p>
       <div class="problem-grid">
         <div class="problem-card">
           <div class="icon">😩</div>
-          <h3>Goodreads is a social network</h3>
-          <p>Public profiles, followers, feeds of other people's opinions. You just wanted to track what you're reading — not perform for an audience.</p>
+          <h3>Goodreads is broken</h3>
+          <p>Built in 2007 and it shows. Clunky interface, no real stats, no habit tracking, no way to log audiobooks properly. Millions use it because there was nothing better — until now.</p>
         </div>
         <div class="problem-card">
           <div class="icon">📊</div>
           <h3>Spreadsheets aren't fun</h3>
-          <p>Some readers track books in Excel. It works, but it's a chore. You use an app to track your runs — why not your reading?</p>
+          <p>Some readers track books in Excel. It works, but it's a chore. You shouldn't need a spreadsheet to enjoy reading.</p>
         </div>
         <div class="problem-card">
           <div class="icon">🧠</div>
           <h3>You forget what you've read</h3>
-          <p>Without a log, books blur together. That amazing thriller from two years ago — what was it called? Nightstand remembers so you don't have to.</p>
+          <p>Without a log, books blur together. That amazing thriller from two years ago — what was it called? You loved it. You can't remember it.</p>
         </div>
         <div class="problem-card">
-          <div class="icon">🎧</div>
-          <h3>Audiobooks are second-class</h3>
-          <p>Most trackers treat audiobooks like an afterthought. Nightstand tracks your listening time with the same session timer as physical reading.</p>
+          <div class="icon">🏃</div>
+          <h3>Reading is a habit</h3>
+          <p>You use an app to track your runs. Your sleep. Your calories. Why not your reading? Habits need tools — and reading is no exception.</p>
         </div>
       </div>
     </div>
@@ -713,6 +761,11 @@
           <p>Earn badges across 10 categories — books completed, pages read, reading hours, streaks, genre firsts, author loyalty, audiobooks, and more. Confetti included.</p>
         </div>
         <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>Share beautiful review cards</h3>
+          <p>Finished a book you loved? Generate a gorgeous review card — cover, rating, review, all styled in your theme. Story format for Instagram/TikTok, square for X/Facebook.</p>
+        </div>
+        <div class="feature-card">
           <div class="feature-icon">📚</div>
           <h3>Beautiful bookshelf view</h3>
           <p>See your library as a bookshelf with color-extracted spines from book covers — or theme-matched colors for a cohesive aesthetic.</p>
@@ -731,6 +784,16 @@
           <div class="feature-icon">📥</div>
           <h3>Import from Goodreads</h3>
           <p>Already on Goodreads? Import your entire reading history via CSV in seconds. Fresh start, zero data loss. Exclude imported books from stats if you want a clean slate.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h3>Smart notifications</h3>
+          <p>Optional reminders for daily streaks, monthly recaps, and books sitting too long on your TBR. All on-device, never spammy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>Sign in with Apple</h3>
+          <p>One-tap secure sign-in. Or use email and password, or Google. Full account deletion with complete server-side data wipe whenever you want.</p>
         </div>
       </div>
     </div>
@@ -773,6 +836,116 @@
     </div>
   </section>
 
+  <!-- COMPARISON -->
+  <section class="comparison">
+    <div class="container">
+      <div class="comparison-header">
+        <p class="section-label">Comparison</p>
+        <h2 class="section-heading">How we stack up</h2>
+        <p class="section-sub">Nightstand does what the other apps don't — or gave up trying.</p>
+      </div>
+      <div style="overflow-x: auto;">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="ours">Nightstand</th>
+              <th>Goodreads</th>
+              <th>StoryGraph</th>
+              <th>Literal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Session timer</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Audiobook time tracking</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Reading streaks</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>48 badges across 10 categories</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Shareable review cards</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Multiple themes</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Light + dark mode</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Sign in with Apple</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="partial">⚠</td>
+            </tr>
+            <tr>
+              <td>Goodreads import</td>
+              <td class="ours check">✓</td>
+              <td>—</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Privacy-first (no social feed)</td>
+              <td class="ours check">✓</td>
+              <td class="cross">✗</td>
+              <td class="partial">⚠</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr>
+              <td>Reading stats dashboard</td>
+              <td class="ours check">✓</td>
+              <td class="partial">⚠</td>
+              <td class="check">✓</td>
+              <td class="partial">⚠</td>
+            </tr>
+            <tr>
+              <td>Free tier</td>
+              <td class="ours check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="container">
@@ -796,7 +969,7 @@
             <li class="muted">Unlimited books</li>
             <li class="muted">Complete reading history</li>
           </ul>
-          <a href="#download" class="btn-pricing outline">Get Started Free</a>
+          <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing outline">Get Started Free</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -813,7 +986,7 @@
             <li>Goodreads import</li>
             <li>7-day free trial</li>
           </ul>
-          <a href="#download" class="btn-pricing filled">Start Free Trial</a>
+          <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing filled">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -833,23 +1006,23 @@
         </div>
         <div class="forwhom-card">
           <div class="persona">🎯</div>
-          <h3>The Goal Setter</h3>
-          <p>Has a yearly reading goal. Tracks progress obsessively. Loves the streak counter and monthly stats.</p>
+          <h3>The Committed Reader</h3>
+          <p>Has a reading goal. Tracks progress. Wants the data and the streaks to stay motivated.</p>
         </div>
         <div class="forwhom-card">
           <div class="persona">🎧</div>
           <h3>The Audiobook Listener</h3>
-          <p>Commutes, exercises, or does chores while listening. Finally a tracker that treats audio as first-class.</p>
+          <p>Commutes, exercises, or does chores while listening. Finally a tracker that treats audio as a first-class format.</p>
         </div>
         <div class="forwhom-card">
           <div class="persona">🚪</div>
           <h3>The Goodreads Exile</h3>
-          <p>Has years of history on a platform they don't love. Wants something better without losing their data.</p>
+          <p>Has years of history on a platform they don't love anymore. Wants something better without losing their data.</p>
         </div>
         <div class="forwhom-card">
           <div class="persona">❤️</div>
-          <h3>The Privacy-Minded</h3>
-          <p>Doesn't want a social network for reading. Just a beautiful, private home for their reading life. That's it.</p>
+          <h3>The Book Lover</h3>
+          <p>Just loves books. Wants a beautiful, dedicated home for their reading life. That's it. That's enough.</p>
         </div>
       </div>
     </div>
@@ -859,8 +1032,8 @@
   <section class="cta-banner">
     <div class="container">
       <h2>Your books are waiting.<br><em>Pick one up tonight.</em></h2>
-      <p>Read more. Track beautifully. Free to download, no credit card required.</p>
-      <a href="#download" class="btn-primary" style="display: inline-flex; margin: 0 auto; position: relative;">
+      <p>Because that's where your book is right now — on your nightstand, waiting for you to pick it up again.</p>
+      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary" style="display: inline-flex; margin: 0 auto; position: relative;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
         Download on the App Store
       </a>
