@@ -4,8 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nightstand — The Reading Companion for People Who Actually Read</title>
-  <meta name="description" content="Nightstand is the reading companion for people who actually read. Track your books, log sessions, earn 48 badges, share beautiful review cards, and import from Goodreads. iPhone only. Free to start.">
+  <meta name="description" content="Nightstand is the reading companion for people who actually read. Track your books, log sessions, earn 48 badges, share beautiful review cards, and import from Goodreads. Now on iPhone and Android. Free to start.">
   <link rel="icon" type="image/jpg" href="images/icon.jpg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nightstand — The Reading Companion for People Who Actually Read">
+  <meta property="og:description" content="Track your books, log sessions, earn 48 badges, and share beautiful review cards. Now on iPhone and Android.">
+  <meta property="og:url" content="https://www.nightstandjournal.com/">
+  <meta property="og:image" content="https://www.nightstandjournal.com/images/icon.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nightstand — Your Reading Companion">
+  <meta name="twitter:description" content="Track your books, log sessions, earn 48 badges, and share beautiful review cards. Now on iPhone and Android.">
+  <meta name="twitter:image" content="https://www.nightstandjournal.com/images/icon.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Nightstand",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS 16+, Android",
+    "softwareVersion": "1.5.2",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Radiant Software"
+    },
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free — up to 7 books" },
+      { "@type": "Offer", "price": "3.99", "priceCurrency": "USD", "description": "Premium monthly" },
+      { "@type": "Offer", "price": "24.99", "priceCurrency": "USD", "description": "Premium annual" }
+    ],
+    "downloadUrl": [
+      "https://apps.apple.com/us/app/nightstand-journal/id6761640851",
+      "https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
@@ -512,6 +547,11 @@
       color: var(--navy-deeper);
     }
     .btn-pricing.filled:hover { background: var(--gold-light); }
+    .pricing-stores {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     /* ─── FOR WHO ─── */
     .forwhom { background: var(--cream-bg); }
@@ -652,15 +692,20 @@
   <!-- HERO -->
   <header class="hero">
     <img src="images/icon.jpg" alt="Nightstand app icon" class="hero-icon">
-    <div class="hero-eyebrow">Now available on the App Store</div>
+    <div class="hero-eyebrow">Now on iPhone and Android</div>
     <h1>The reading companion for people who <em>actually read</em></h1>
     <p class="hero-sub">
       Track every book. Log every session. Earn 48 badges. Share beautiful review cards. Import from Goodreads in seconds. Your reading life, beautifully kept.
     </p>
     <div class="hero-actions">
-      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
+      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary" aria-label="Download on the App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 12.5c0-2.8 2.3-4.1 2.4-4.2-1.3-1.9-3.3-2.2-4-2.2-1.7-.2-3.3 1-4.2 1-.9 0-2.2-1-3.6-.9-1.9 0-3.6 1.1-4.5 2.8-2 3.4-.5 8.5 1.4 11.3.9 1.4 2 2.9 3.4 2.8 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.4 0 2.4-1.4 3.3-2.7 1-1.5 1.4-3.1 1.4-3.2-.1-.1-2.7-1-2.7-4.7zM14.5 4.5c.8-.9 1.3-2.2 1.1-3.5-1.1.1-2.4.8-3.2 1.7-.7.8-1.4 2.1-1.2 3.4 1.2.1 2.4-.6 3.3-1.6z"/></svg>
         Download on the App Store
+      </a>
+      <!-- TODO: Play Store URL returned 404 at time of authoring — confirm the listing is publicly live before launch. App ID: com.radiantsoftware.nightstand -->
+      <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-primary" aria-label="Get it on Google Play">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.4.4-.6 1-.6 1.7v16c0 .7.2 1.3.6 1.7l9.1-9.7L3.6 2.3zm10.5 11.2l2.9 3.1-9.2 5.3c-.4.2-.8.3-1.2.1l7.5-8.5zm0-3l-7.5-8.6c.4-.2.8-.1 1.2.1l9.2 5.4-2.9 3.1zm6.3 1.3c.6.3.9.8.9 1.2 0 .4-.3.9-.9 1.2l-2.8 1.6-3.2-3.4 3.2-3.4 2.8 1.6z"/></svg>
+        Get it on Google Play
       </a>
       <a href="#features" class="btn-secondary">See how it works</a>
     </div>
@@ -668,7 +713,7 @@
       <span>Free to start</span>
       <span>Privacy-first</span>
       <span>No social feed</span>
-      <span>iPhone (iOS 16+)</span>
+      <span>iOS 16+ &amp; Android</span>
     </div>
   </header>
 
@@ -741,9 +786,24 @@
           <p>Find any book via Google Books or scan the ISBN barcode. Covers, page counts, genres, and series info fill in automatically.</p>
         </div>
         <div class="feature-card">
+          <div class="feature-icon">✏️</div>
+          <h3>Edit anything, anytime</h3>
+          <p>Tap Edit on any book to update title, author, format, source, pages, hours, genre, ISBN, series, published date, and description. Get every book exactly right.</p>
+        </div>
+        <div class="feature-card">
           <div class="feature-icon">⏱️</div>
           <h3>Built-in reading timer</h3>
           <p>Tap Start when you pick up your book, Stop when you put it down. Nightstand logs your time, pages, and progress automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Forgot to start the timer?</h3>
+          <p>Open Session History to log any past day — duration, pages, and notes optional. Your streak stays alive, even on the nights you fell asleep mid-chapter.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Reading goals without limits</h3>
+          <p>Set your yearly goal anywhere from 1 to 9,999 books. Modest or ambitious — the number is yours to pick.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
@@ -794,6 +854,11 @@
           <div class="feature-icon">🔐</div>
           <h3>Sign in with Apple</h3>
           <p>One-tap secure sign-in. Or use email and password, or Google. Full account deletion with complete server-side data wipe whenever you want.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛟</div>
+          <h3>Help, one tap away</h3>
+          <p>The About screen shows your app version, device, and account status. Tap to copy diagnostics or reach support — so when something feels off, we can fix it quickly.</p>
         </div>
       </div>
     </div>
@@ -960,7 +1025,7 @@
           <div class="pricing-price">$0</div>
           <p class="pricing-period">forever</p>
           <ul class="pricing-list">
-            <li>Up to 5 books</li>
+            <li>Up to 7 books</li>
             <li>Full feature access</li>
             <li>Session timer</li>
             <li>Stats dashboard</li>
@@ -969,7 +1034,10 @@
             <li class="muted">Unlimited books</li>
             <li class="muted">Complete reading history</li>
           </ul>
-          <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing outline">Get Started Free</a>
+          <div class="pricing-stores">
+            <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing outline">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-pricing outline">Google Play</a>
+          </div>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -986,7 +1054,10 @@
             <li>Goodreads import</li>
             <li>7-day free trial</li>
           </ul>
-          <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing filled">Start Free Trial</a>
+          <div class="pricing-stores">
+            <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing filled">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-pricing filled">Google Play</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1033,10 +1104,16 @@
     <div class="container">
       <h2>Your books are waiting.<br><em>Pick one up tonight.</em></h2>
       <p>Because that's where your book is right now — on your nightstand, waiting for you to pick it up again.</p>
-      <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary" style="display: inline-flex; margin: 0 auto; position: relative;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 17V3M7 12l5 5 5-5"/><path d="M3 21h18"/></svg>
-        Download on the App Store
-      </a>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative;">
+        <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-primary" aria-label="Download on the App Store">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 12.5c0-2.8 2.3-4.1 2.4-4.2-1.3-1.9-3.3-2.2-4-2.2-1.7-.2-3.3 1-4.2 1-.9 0-2.2-1-3.6-.9-1.9 0-3.6 1.1-4.5 2.8-2 3.4-.5 8.5 1.4 11.3.9 1.4 2 2.9 3.4 2.8 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.4 0 2.4-1.4 3.3-2.7 1-1.5 1.4-3.1 1.4-3.2-.1-.1-2.7-1-2.7-4.7zM14.5 4.5c.8-.9 1.3-2.2 1.1-3.5-1.1.1-2.4.8-3.2 1.7-.7.8-1.4 2.1-1.2 3.4 1.2.1 2.4-.6 3.3-1.6z"/></svg>
+          Download on the App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-primary" aria-label="Get it on Google Play">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.4.4-.6 1-.6 1.7v16c0 .7.2 1.3.6 1.7l9.1-9.7L3.6 2.3zm10.5 11.2l2.9 3.1-9.2 5.3c-.4.2-.8.3-1.2.1l7.5-8.5zm0-3l-7.5-8.6c.4-.2.8-.1 1.2.1l9.2 5.4-2.9 3.1zm6.3 1.3c.6.3.9.8.9 1.2 0 .4-.3.9-.9 1.2l-2.8 1.6-3.2-3.4 3.2-3.4 2.8 1.6z"/></svg>
+          Get it on Google Play
+        </a>
+      </div>
     </div>
   </section>
 
