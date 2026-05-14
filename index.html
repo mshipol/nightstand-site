@@ -32,7 +32,8 @@
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free — up to 7 books" },
       { "@type": "Offer", "price": "3.99", "priceCurrency": "USD", "description": "Premium monthly" },
-      { "@type": "Offer", "price": "24.99", "priceCurrency": "USD", "description": "Premium annual" }
+      { "@type": "Offer", "price": "24.99", "priceCurrency": "USD", "description": "Premium annual" },
+      { "@type": "Offer", "price": "59.99", "priceCurrency": "USD", "description": "Lifetime — one-time purchase" }
     ],
     "downloadUrl": [
       "https://apps.apple.com/us/app/nightstand-journal/id6761640851",
@@ -446,11 +447,17 @@
     .pricing-header .section-sub { margin: 0 auto; }
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
-      max-width: 760px;
+      max-width: 980px;
       margin: 0 auto;
+      align-items: stretch;
     }
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card .pricing-list { flex: 1; }
     .pricing-card {
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -1052,11 +1059,28 @@
             <li>Streaks &amp; calendar</li>
             <li>Badges &amp; achievements</li>
             <li>Goodreads import</li>
-            <li>7-day free trial</li>
+            <li>Cancel anytime</li>
           </ul>
           <div class="pricing-stores">
             <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing filled">App Store</a>
             <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-pricing filled">Google Play</a>
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name">Lifetime</div>
+          <div class="pricing-price"><sup>$</sup>59<sup>.99</sup></div>
+          <p class="pricing-period">one-time payment &middot; yours forever</p>
+          <ul class="pricing-list">
+            <li>Everything in Premium</li>
+            <li>Unlimited books, forever</li>
+            <li>Complete reading history</li>
+            <li>All future updates</li>
+            <li>No subscription</li>
+            <li>One payment, done</li>
+          </ul>
+          <div class="pricing-stores">
+            <a href="https://apps.apple.com/us/app/nightstand-journal/id6761640851" class="btn-pricing outline">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.radiantsoftware.nightstand" class="btn-pricing outline">Google Play</a>
           </div>
         </div>
       </div>
