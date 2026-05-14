@@ -5,40 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support — Nightstand</title>
   <meta name="description" content="Get help with Nightstand — FAQ, troubleshooting, and contact support.">
-  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="icon" type="image/jpg" href="images/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      --navy: #2B3A67;
+      --navy-dark: #1e2a4a;
+      --navy-deeper: #162040;
+      --gold: #D4A84B;
+      --gold-light: #e4c47a;
+      --cream: #EDE0C8;
+      --cream-light: #f5efe3;
+      --cream-bg: #faf7f2;
+      --lavender: #8B7AAF;
       --ink: #1c1917;
-      --warm-white: #fdfaf6;
-      --cream: #f5f0e8;
-      --amber: #d97706;
-      --amber-light: #fbbf24;
-      --brown: #78350f;
-      --brown-mid: #92400e;
       --text-muted: #6b6560;
-      --border: #e5ddd0;
+      --border: #e0d8cc;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
       line-height: 1.7;
-      background: var(--warm-white);
+      background: var(--cream-bg);
     }
 
-    a { color: var(--amber); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    h1, h2, h3, .nav-brand { font-family: 'Playfair Display', Georgia, serif; }
+
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { color: var(--gold); text-decoration: underline; }
 
     /* NAV */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(253, 250, 246, 0.92);
+      background: rgba(250, 247, 242, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
@@ -49,40 +57,59 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 64px;
     }
     .nav-brand {
-      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--brown);
+      color: var(--navy);
       letter-spacing: -0.01em;
       text-decoration: none;
     }
-    .nav-brand span { color: var(--amber); }
+    .nav-brand img {
+      height: 32px;
+      width: auto;
+    }
+    .nav-brand:hover { color: var(--navy); text-decoration: none; }
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       font-size: 0.875rem;
+      font-weight: 600;
     }
     .nav-links a { color: var(--text-muted); }
-    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links a:hover { color: var(--navy); text-decoration: none; }
 
     /* PAGE HEADER */
     .page-header {
-      background: linear-gradient(160deg, #2c1810 0%, #4a2415 100%);
+      background: linear-gradient(160deg, var(--navy-deeper) 0%, var(--navy) 50%, #3a4a7a 100%);
       color: #fff;
-      padding: 64px 24px 52px;
+      padding: 72px 24px 60px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,75,0.18) 0%, transparent 60%);
+      pointer-events: none;
     }
     .page-header h1 {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
       letter-spacing: -0.025em;
       margin-bottom: 10px;
+      position: relative;
     }
     .page-header p {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.65);
+      position: relative;
     }
 
     /* LAYOUT */
@@ -94,20 +121,22 @@
 
     /* CONTACT CTA */
     .contact-card {
-      background: linear-gradient(135deg, #fdf6ea, #fff9f0);
-      border: 1px solid #f0ddb8;
+      background: linear-gradient(160deg, #fdf8ef, #fffdf8);
+      border: 1px solid var(--gold);
       border-radius: 16px;
       padding: 36px 32px;
       margin-bottom: 56px;
       text-align: center;
+      box-shadow: 0 8px 32px rgba(212,168,75,0.12);
     }
     .contact-card h2 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 800;
       margin-bottom: 10px;
       border: none;
       padding: 0;
       margin-top: 0;
+      color: var(--navy);
     }
     .contact-card p {
       font-size: 0.95rem;
@@ -116,22 +145,22 @@
     }
     .contact-btn {
       display: inline-block;
-      background: var(--amber);
-      color: #fff;
+      background: var(--gold);
+      color: var(--navy-deeper);
       font-weight: 700;
       font-size: 0.95rem;
       padding: 12px 28px;
       border-radius: 10px;
       text-decoration: none;
-      transition: background 0.15s;
+      transition: background 0.15s, transform 0.1s;
     }
-    .contact-btn:hover { background: var(--brown-mid); text-decoration: none; }
+    .contact-btn:hover { background: var(--gold-light); color: var(--navy-deeper); text-decoration: none; transform: translateY(-1px); }
 
     /* FAQ */
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      color: var(--ink);
+      color: var(--navy);
       margin: 48px 0 20px;
       padding-bottom: 10px;
       border-bottom: 2px solid var(--border);
@@ -140,23 +169,24 @@
     .faq-group {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       margin-bottom: 8px;
     }
 
     details {
       border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--warm-white);
+      border-radius: 12px;
+      background: #fff;
       overflow: hidden;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
     details[open] {
-      border-color: #d4c9b5;
+      border-color: var(--lavender);
+      box-shadow: 0 4px 16px rgba(43,58,103,0.06);
     }
     details summary {
       padding: 16px 20px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
       list-style: none;
@@ -164,22 +194,22 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      color: var(--ink);
+      color: var(--navy);
       user-select: none;
     }
     details summary::-webkit-details-marker { display: none; }
     details summary::after {
       content: '+';
-      font-size: 1.3rem;
-      font-weight: 300;
-      color: var(--amber);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--gold);
       flex-shrink: 0;
       line-height: 1;
     }
     details[open] summary::after { content: '−'; }
     .faq-answer {
       padding: 0 20px 18px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: #3d3730;
       line-height: 1.7;
       border-top: 1px solid var(--border);
@@ -190,12 +220,34 @@
     .faq-answer ul { padding-left: 20px; }
     .faq-answer li { margin-bottom: 4px; }
     .faq-answer ol { padding-left: 20px; }
+    .faq-answer a { color: var(--navy); font-weight: 600; }
+    .faq-answer a:hover { color: var(--gold); }
+
+    .stuck-card {
+      margin-top: 56px;
+      padding: 32px;
+      background: var(--cream);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .stuck-card .title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .stuck-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
 
     /* FOOTER */
     footer {
-      background: var(--ink);
+      background: var(--navy-deeper);
       color: rgba(255,255,255,0.55);
-      padding: 36px 24px;
+      padding: 40px 24px;
       text-align: center;
       font-size: 0.85rem;
     }
@@ -205,11 +257,22 @@
       gap: 24px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     .footer-links a { color: rgba(255,255,255,0.55); transition: color 0.15s; }
-    .footer-links a:hover { color: #fff; text-decoration: none; }
-    .footer-brand { font-weight: 700; color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 6px; }
+    .footer-links a:hover { color: var(--gold-light); text-decoration: none; }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .footer-brand img {
+      height: 24px;
+      width: auto;
+      opacity: 0.8;
+    }
 
     @media (max-width: 640px) {
       .nav-links { display: none; }
@@ -221,7 +284,9 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">📚 Night<span>stand</span></a>
+      <a href="index.html" class="nav-brand">
+        <img src="images/nightstand.png" alt="Nightstand logo">
+      </a>
       <div class="nav-links">
         <a href="index.html#features">Features</a>
         <a href="index.html#pricing">Pricing</a>
@@ -435,9 +500,9 @@
       </details>
     </div>
 
-    <div style="margin-top: 56px; padding: 32px; background: var(--cream); border-radius: 16px; text-align: center;">
-      <p style="font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Still stuck?</p>
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">We're a small team and we genuinely care about fixing problems. Drop us a line.</p>
+    <div class="stuck-card">
+      <p class="title">Still stuck?</p>
+      <p>We're a small team and we genuinely care about fixing problems. Drop us a line.</p>
       <a href="mailto:support@nightstandapp.com" class="contact-btn">support@nightstandapp.com</a>
     </div>
 
@@ -445,13 +510,15 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">📚 Nightstand</div>
+      <div class="footer-brand">
+        <img src="images/nightstand.png" alt="Nightstand">
+      </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="support.html">Support</a>
       </div>
-      <p>&copy; 2025 Nightstand. All rights reserved.</p>
+      <p>&copy; 2025 Radiant Software. All rights reserved.</p>
     </div>
   </footer>
 
